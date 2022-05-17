@@ -1,0 +1,13 @@
+# Created by .ignore support plugin (hsz.mobi)
+/target/
+.project
+.class
+.iml
+.classpath
+/.settings/
+/.idea/
+.factorypath
+/.apt_generated/
+/.apt_generated_tests/
+/.mvn/
+/evaluation.iml
