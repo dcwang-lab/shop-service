@@ -13,6 +13,7 @@
 
     <modules>
         <module>shop-commodity</module>
+        <module>shop-common</module>
     </modules>
 
     <properties>

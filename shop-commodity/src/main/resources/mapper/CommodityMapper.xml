@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shop.commodity.mapper.CommodityMapper">
+    <resultMap id="commodityResult" type="com.shop.commodity.entity.Commodity">
+        <id column="id" property="id"/>
+        <id column="name" property="name"/>
+        <id column="describe" property="describe"/>
+        <id column="type" property="type"/>
+        <id column="price" property="price"/>
+        <id column="file_path" property="filePath"/>
+        <id column="create_by" property="createBy"/>
+        <id column="create_time" property="createTime"/>
+        <id column="update_by" property="updateBy"/>
+        <id column="update_time" property="updateTime"/>
+        <id column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <sql id="selectCommodityVO">
+        select `id`,
+               `name`,
+               `describe`,
+               `type`,
+               `price`,
+               `file_path`,
+               `create_by`,
+               `create_time`,
+               `update_by`,
+               `update_time`,
+               `del_flag`
+        from tb_commodity c
+    </sql>
+
+    <select id="listCommodities" resultMap="commodityResult">
+        <include refid="selectCommodityVO"/>
+        <where>
+            <if test="name != null and name != ''">
+                and c.`name` like concat('%', #{name}, '%')
+            </if>
+            <if test="(params != null and params != '') and (params.startTime != null and params.startTime != '') and
+            (params.endTime != null and params.endTime != '')">
+                and c.`create_time` between #{params.startTime} and #{params.endTime}
+            </if>
+            and c.`del_flag` = 0
+        </where>
+    </select>
+</mapper>

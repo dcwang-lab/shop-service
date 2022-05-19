@@ -1,17 +1,19 @@
 package com.shop.commodity.entity;
 
+import com.shop.common.util.BaseEntity;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 /**
  * @Author: dcWang
  * @Date: 2022/5/18 19:10
  * @Description: 商品实体类
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class Commodity {
+public class Commodity extends BaseEntity {
 
     /**
      * 主键id
@@ -42,30 +44,5 @@ public class Commodity {
      * 商品图片
      */
     private String filePath;
-
-    /**
-     * 创建人id
-     */
-    private Long createBy;
-
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-
-    /**
-     * 更新人id
-     */
-    private Long updateBy;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
-
-    /**
-     * 删除状态(0 未删除 1 已删除)
-     */
-    private Integer delFlag;
 
 }
