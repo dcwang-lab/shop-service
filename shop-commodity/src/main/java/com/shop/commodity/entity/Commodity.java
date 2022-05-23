@@ -33,7 +33,7 @@ public class Commodity extends BaseEntity {
     /**
      * 商品类型
      */
-    private Integer type;
+    private Long typeId;
 
     /**
      * 商品价格
@@ -44,5 +44,10 @@ public class Commodity extends BaseEntity {
      * 商品图片
      */
     private String filePath;
+
+    /**
+     * 商品库存
+     */
+    private Integer stock;
 
 }

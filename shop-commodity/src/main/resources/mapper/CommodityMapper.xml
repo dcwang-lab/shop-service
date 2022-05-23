@@ -7,8 +7,9 @@
         <id column="id" property="id"/>
         <id column="name" property="name"/>
         <id column="describe" property="describe"/>
-        <id column="type" property="type"/>
+        <id column="type_id" property="typeId"/>
         <id column="price" property="price"/>
+        <id column="stock" property="stock"/>
         <id column="file_path" property="filePath"/>
         <id column="create_by" property="createBy"/>
         <id column="create_time" property="createTime"/>
@@ -21,8 +22,9 @@
         select `id`,
                `name`,
                `describe`,
-               `type`,
+               `type_id`,
                `price`,
+               `stock`,
                `file_path`,
                `create_by`,
                `create_time`,
