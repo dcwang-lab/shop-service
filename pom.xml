@@ -14,6 +14,7 @@
     <modules>
         <module>shop-commodity</module>
         <module>shop-common</module>
+        <module>shop-gateway</module>
     </modules>
 
     <properties>
@@ -27,6 +28,7 @@
         <pagehelper.boot.version>1.4.0</pagehelper.boot.version>
         <nacos.version>0.9.0.RELEASE</nacos.version>
         <nacos-config.version>0.9.0.RELEASE</nacos-config.version>
+        <gateway.version>2.2.0.RELEASE</gateway.version>
         <sentinel-datasource.version>1.8.4</sentinel-datasource.version>
         <commons-lang3.version>3.5</commons-lang3.version>
         <openfeign.version>2.2.1.RELEASE</openfeign.version>
@@ -49,11 +51,27 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-webmvc</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>spring-webmvc</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
             <version>${nacos-config.version}</version>
+        </dependency>
+        <!-- gateway -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+            <version>${gateway.version}</version>
         </dependency>
         <!-- openfeign -->
         <dependency>

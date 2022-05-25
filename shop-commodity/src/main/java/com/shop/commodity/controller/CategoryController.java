@@ -1,7 +1,7 @@
 package com.shop.commodity.controller;
 
-import com.shop.commodity.entity.Commodity;
-import com.shop.commodity.service.ICommodityService;
+import com.shop.commodity.entity.Category;
+import com.shop.commodity.service.ICategoryService;
 import com.shop.common.util.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,21 +14,27 @@ import java.util.List;
 
 /**
  * @Author: dcWang
- * @Date: 2022/5/19 18:46
- * @Description: 商品controller
+ * @Date: 2022/5/25 15:08
+ * @Description: 商品类别controller
  */
 @RestController
-@RequestMapping("/commodity")
+@RequestMapping("/category")
 @CrossOrigin
 @Slf4j
-public class CommodityController {
+public class CategoryController {
 
     @Resource
-    private ICommodityService commodityService;
+    private ICategoryService categoryService;
 
-    @GetMapping("/listCommodities")
-    public Result listCommodities(Commodity queryParam) {
-        List<Commodity> list = commodityService.listCommodities(queryParam);
+    /**
+     * 商品类别列表查询
+     *
+     * @param queryParam 查询条件
+     * @return Result
+     */
+    @GetMapping("/listCategories")
+    public Result listCategories(Category queryParam) {
+        List<Category> list = categoryService.listCategories(queryParam);
         return Result.success().put("data", list);
     }
 
