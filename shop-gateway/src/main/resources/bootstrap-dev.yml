@@ -15,3 +15,29 @@ spring:
         file-extension: yml
         # 命名空间
         namespace: 4c4ff881-d9e8-4197-987f-a8e8af19ea9b
+    gateway:
+      # gateway的全局跨域请求配置
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allow-credentials: true
+            allowed-origins: "*"
+            allowed-headers: "*"
+            # 允许跨域的method
+            allowed-methods:
+              - OPTIONS
+              - GET
+              - POST
+              - PUT
+              - DELETE
+            # 允许跨域的时间
+            max-age: 3600
+      routes:
+          - id: cpmmodity-router
+#            uri: lb://shop-cpmmodity
+            uri: http://127.0.0.1:8070
+            predicates:
+              - Path=/commodity/**
+            filters:
+              - StripPrefix=1
+#              - RewritePath=/commodity/(?<segment>.*),/$\{segment}

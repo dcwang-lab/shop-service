@@ -5,6 +5,3 @@ spring:
   profiles:
     # 环境配置
     active: dev
-server:
-  servlet:
-    context-path: /shop-commodity

@@ -19,7 +19,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/commodity")
-@CrossOrigin
+//@CrossOrigin
 @Slf4j
 public class CommodityController {
 
@@ -28,6 +28,7 @@ public class CommodityController {
 
     @GetMapping("/listCommodities")
     public Result listCommodities(Commodity queryParam) {
+        log.info("来了1111");
         List<Commodity> list = commodityService.listCommodities(queryParam);
         return Result.success().put("data", list);
     }
