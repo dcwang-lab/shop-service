@@ -33,11 +33,11 @@ spring:
             # 允许跨域的时间
             max-age: 3600
       routes:
-          - id: cpmmodity-router
-#            uri: lb://shop-cpmmodity
-            uri: http://127.0.0.1:8070
+          - id: commodity-router
+            uri: lb://shop-commodity
+#            uri: https://wqs.jd.com/data/coss/important/msportal_recovery.shtml?tpl=index
             predicates:
               - Path=/commodity/**
             filters:
-              - StripPrefix=1
-#              - RewritePath=/commodity/(?<segment>.*),/$\{segment}
+#              - StripPrefix=1
+              - RewritePath=/commodity/(?<segment>.*),/$\{segment}

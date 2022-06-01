@@ -4,10 +4,7 @@ import com.shop.commodity.entity.Commodity;
 import com.shop.commodity.service.ICommodityService;
 import com.shop.common.util.Result;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -19,7 +16,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/commodity")
-//@CrossOrigin
+@CrossOrigin
 @Slf4j
 public class CommodityController {
 
@@ -27,6 +24,7 @@ public class CommodityController {
     private ICommodityService commodityService;
 
     @GetMapping("/listCommodities")
+    @ResponseBody
     public Result listCommodities(Commodity queryParam) {
         log.info("来了1111");
         List<Commodity> list = commodityService.listCommodities(queryParam);
