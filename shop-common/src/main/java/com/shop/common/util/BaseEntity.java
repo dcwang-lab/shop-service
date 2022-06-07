@@ -14,6 +14,11 @@ import java.util.Map;
 public class BaseEntity {
 
     /**
+     * 主键id
+     */
+    private Long id;
+
+    /**
      * 创建人id
      */
     private Long createBy;

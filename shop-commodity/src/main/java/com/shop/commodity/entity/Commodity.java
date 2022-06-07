@@ -16,11 +16,6 @@ import java.math.BigDecimal;
 public class Commodity extends BaseEntity {
 
     /**
-     * 主键id
-     */
-    private Long id;
-
-    /**
      * 商品名称
      */
     private String name;
@@ -31,7 +26,12 @@ public class Commodity extends BaseEntity {
     private String describe;
 
     /**
-     * 商品类型
+     * 商品规格id
+     */
+    private Long specsId;
+
+    /**
+     * 商品类型id
      */
     private Long typeId;
 

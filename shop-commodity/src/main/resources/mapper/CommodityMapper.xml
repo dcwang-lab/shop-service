@@ -7,6 +7,7 @@
         <id column="id" property="id"/>
         <id column="name" property="name"/>
         <id column="describe" property="describe"/>
+        <id column="specs_id" property="specsId"/>
         <id column="type_id" property="typeId"/>
         <id column="price" property="price"/>
         <id column="stock" property="stock"/>
@@ -22,6 +23,7 @@
         select `id`,
                `name`,
                `describe`,
+               `specs_id`,
                `type_id`,
                `price`,
                `stock`,
@@ -39,6 +41,9 @@
         <where>
             <if test="name != null and name != ''">
                 and c.`name` like concat('%', #{name}, '%')
+            </if>
+            <if test="typeId != null">
+                and c.type_id = #{typeId}
             </if>
             <if test="(params != null and params != '') and (params.startTime != null and params.startTime != '') and
             (params.endTime != null and params.endTime != '')">

@@ -14,11 +14,6 @@ import lombok.EqualsAndHashCode;
 public class Category extends BaseEntity {
 
     /**
-     * 主键id
-     */
-    private Long id;
-
-    /**
      * 上级id
      */
     private Long parentId;
