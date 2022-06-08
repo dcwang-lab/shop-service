@@ -23,4 +23,9 @@ public class CommodityServiceImpl implements ICommodityService {
     public List<Commodity> listCommodities(Commodity queryParam) {
         return commodityMapper.listCommodities(queryParam);
     }
+
+    @Override
+    public void update(Commodity param) {
+        commodityMapper.update(param);
+    }
 }

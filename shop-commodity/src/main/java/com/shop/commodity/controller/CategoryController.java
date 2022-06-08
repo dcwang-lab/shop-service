@@ -19,7 +19,6 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/category")
-@CrossOrigin
 @Slf4j
 public class CategoryController {
 

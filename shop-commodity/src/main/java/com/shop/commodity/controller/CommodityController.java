@@ -16,7 +16,6 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/commodity")
-@CrossOrigin
 @Slf4j
 public class CommodityController {
 

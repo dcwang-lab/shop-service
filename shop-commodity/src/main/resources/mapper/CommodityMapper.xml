@@ -52,4 +52,15 @@
             and c.`del_flag` = 0
         </where>
     </select>
+
+    <update id="update" parameterType="com.shop.commodity.entity.Commodity">
+        update tb_commodity
+        <set>
+            <if test="stock != null">
+                stock = #{stock},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
 </mapper>

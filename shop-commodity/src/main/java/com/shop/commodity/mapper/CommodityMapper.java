@@ -21,4 +21,11 @@ public interface CommodityMapper {
      */
     List<Commodity> listCommodities(Commodity queryParam);
 
+    /**
+     * 更新商品信息
+     *
+     * @param param 参数
+     */
+    void update(Commodity param);
+
 }
