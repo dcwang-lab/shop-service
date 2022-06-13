@@ -4,7 +4,6 @@ import com.shop.commodity.entity.Category;
 import com.shop.commodity.service.ICategoryService;
 import com.shop.common.util.Result;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

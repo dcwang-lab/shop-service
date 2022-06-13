@@ -22,7 +22,7 @@ import reactor.core.publisher.Mono;
 public class GlobalCorsConfig {
 
     @Bean
-    public WebFilter corsFilter2() {
+    public WebFilter corsFilter() {
         return (ServerWebExchange ctx, WebFilterChain chain) -> {
             ServerHttpRequest request = ctx.getRequest();
             if (CorsUtils.isCorsRequest(request)) {
