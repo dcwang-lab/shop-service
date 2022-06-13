@@ -20,19 +20,19 @@
     </resultMap>
 
     <sql id="selectCommodityVO">
-        select `id`,
-               `name`,
-               `describe`,
-               `specs_id`,
-               `type_id`,
-               `price`,
-               `stock`,
-               `file_path`,
-               `create_by`,
-               `create_time`,
-               `update_by`,
-               `update_time`,
-               `del_flag`
+        select c.`id`,
+               c.`name`,
+               c.`describe`,
+               c.`specs_id`,
+               c.`type_id`,
+               c.`price`,
+               c.`stock`,
+               c.`file_path`,
+               c.`create_by`,
+               c.`create_time`,
+               c.`update_by`,
+               c.`update_time`,
+               c.`del_flag`
         from tb_commodity c
     </sql>
 
@@ -51,6 +51,11 @@
             </if>
             and c.`del_flag` = 0
         </where>
+    </select>
+
+    <select id="getCommodity" resultMap="commodityResult">
+        <include refid="selectCommodityVO"/>
+        where c.id = #{id}
     </select>
 
     <update id="update" parameterType="com.shop.commodity.entity.Commodity">

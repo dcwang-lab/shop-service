@@ -22,6 +22,14 @@ public interface CommodityMapper {
     List<Commodity> listCommodities(Commodity queryParam);
 
     /**
+     * 获取商品详情
+     *
+     * @param id 商品id
+     * @return Commodity
+     */
+    Commodity getCommodity(Long id);
+
+    /**
      * 更新商品信息
      *
      * @param param 参数

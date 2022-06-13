@@ -4,6 +4,7 @@ import com.shop.commodity.entity.Commodity;
 import com.shop.commodity.mapper.CommodityMapper;
 import com.shop.commodity.service.ICommodityService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -25,6 +26,12 @@ public class CommodityServiceImpl implements ICommodityService {
     }
 
     @Override
+    public Commodity getCommodity(Long id) {
+        return commodityMapper.getCommodity(id);
+    }
+
+    @Override
+    @Transactional
     public void update(Commodity param) {
         commodityMapper.update(param);
     }

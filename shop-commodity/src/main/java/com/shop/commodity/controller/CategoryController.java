@@ -16,9 +16,9 @@ import java.util.List;
  * @Date: 2022/5/25 15:08
  * @Description: 商品类别controller
  */
+@Slf4j
 @RestController
 @RequestMapping("/category")
-@Slf4j
 public class CategoryController {
 
     @Resource
