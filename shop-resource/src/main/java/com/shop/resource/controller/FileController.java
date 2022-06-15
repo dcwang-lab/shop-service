@@ -3,6 +3,7 @@ package com.shop.resource.controller;
 import com.shop.common.constant.FileConstant;
 import com.shop.common.util.DateUtils;
 import com.shop.common.util.Result;
+import com.shop.resource.util.FileUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -48,7 +49,7 @@ public class FileController {
             if (isEmpty) {
                 return Result.error("上传失败，请选择要上传的文件!");
             }
-            if (isViolation(files)) {
+            if (FileUtils.isViolation(files)) {
                 return Result.error("上传失败，存在未知的文件格式!");
             }
             // 返回集合
@@ -83,13 +84,8 @@ public class FileController {
                         // 访问路径
                         String visitPath = prefix + path;
                         // 判断路径是否存在
-                        File newFile = new File(fullPath);
-                        if (!newFile.getParentFile().exists()) {
-                            boolean isCreateMkdirs = newFile.getParentFile().mkdirs();
-                            if (!isCreateMkdirs) {
-                                log.info("父文件夹创建失败!");
-                                return Result.error("文件路径创建失败!");
-                            }
+                        if (!FileUtils.createFolder(new File(fullPath))) {
+                            return Result.error("文件夹创建失败!");
                         }
                         // 输出文件
                         BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(fullPath));
@@ -109,27 +105,6 @@ public class FileController {
             e.printStackTrace();
             return Result.error("上传失败，系统异常!");
         }
-    }
-
-    /**
-     * 判断是否有未知的文件格式
-     *
-     * @param files 文件集合
-     * @return boolean
-     */
-    public boolean isViolation(MultipartFile[] files) {
-        for (MultipartFile file : files) {
-            String fileName = file.getOriginalFilename();
-            if (StringUtils.isBlank(fileName)) {
-                return true;
-            }
-            String fileSuffix = fileName.substring(fileName.indexOf(".") + 1);
-            if (!FileConstant.IMAGE_TYPES.contains(fileSuffix) && !FileConstant.FILE_TYPES.contains(fileSuffix)
-                    && !FileConstant.VIDEO_TYPES.contains(fileSuffix)) {
-                return true;
-            }
-        }
-        return false;
     }
 
 }
