@@ -1,6 +1,8 @@
 package com.shop.user.mapper;
 
 import com.shop.user.entity.User;
+import com.shop.user.vo.UserInfoVO;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -9,6 +11,7 @@ import java.util.List;
  * @Date: 2022/6/13 11:27
  * @Description: 用户mapper接口
  */
+@Mapper
 public interface UserMapper {
 
     /**
@@ -17,7 +20,7 @@ public interface UserMapper {
      * @param queryParam 查询条件
      * @return List
      */
-    List<User> listUsers(User queryParam);
+    List<UserInfoVO> listUsers(User queryParam);
 
     /**
      * 获取用户详情
@@ -25,7 +28,7 @@ public interface UserMapper {
      * @param id 用户id
      * @return User
      */
-    User getUser(Long id);
+    UserInfoVO getUser(Long id);
 
     /**
      * 新增用户

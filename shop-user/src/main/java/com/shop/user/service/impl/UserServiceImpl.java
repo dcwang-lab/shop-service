@@ -3,6 +3,7 @@ package com.shop.user.service.impl;
 import com.shop.user.entity.User;
 import com.shop.user.mapper.UserMapper;
 import com.shop.user.service.IUserService;
+import com.shop.user.vo.UserInfoVO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,12 +22,12 @@ public class UserServiceImpl implements IUserService {
     private UserMapper userMapper;
 
     @Override
-    public List<User> listUsers(User queryParam) {
+    public List<UserInfoVO> listUsers(User queryParam) {
         return userMapper.listUsers(queryParam);
     }
 
     @Override
-    public User getUser(Long id) {
+    public UserInfoVO getUser(Long id) {
         return userMapper.getUser(id);
     }
 

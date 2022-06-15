@@ -1,6 +1,7 @@
 package com.shop.user.service;
 
 import com.shop.user.entity.User;
+import com.shop.user.vo.UserInfoVO;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public interface IUserService {
      * @param queryParam 查询条件
      * @return List
      */
-    List<User> listUsers(User queryParam);
+    List<UserInfoVO> listUsers(User queryParam);
 
     /**
      * 获取用户详情
@@ -25,7 +26,7 @@ public interface IUserService {
      * @param id 用户id
      * @return User
      */
-    User getUser(Long id);
+    UserInfoVO getUser(Long id);
 
     /**
      * 新增用户

@@ -16,6 +16,7 @@
         <module>shop-common</module>
         <module>shop-gateway</module>
         <module>shop-user</module>
+        <module>shop-resource</module>
     </modules>
 
     <properties>

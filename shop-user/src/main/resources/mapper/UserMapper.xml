@@ -40,8 +40,9 @@
         </where>
     </select>
 
-    <select id="getUser" resultMap="userResult">
-        <include refid="selectUserVO"/>
+    <select id="getUser" resultType="com.shop.user.vo.UserInfoVO">
+        select u.id, u.`name`, u.sex, u.phone, u.photo, u.balance, u.create_time createTime
+        from tb_user u
         where u.id = #{id}
     </select>
 
