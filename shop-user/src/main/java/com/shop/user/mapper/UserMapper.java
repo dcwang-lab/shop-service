@@ -1,5 +1,6 @@
 package com.shop.user.mapper;
 
+import com.shop.user.dto.RegisterDTO;
 import com.shop.user.entity.User;
 import com.shop.user.vo.UserInfoVO;
 import org.apache.ibatis.annotations.Mapper;
@@ -35,7 +36,7 @@ public interface UserMapper {
      *
      * @param param 参数
      */
-    void insertUser(User param);
+    void insertUser(RegisterDTO param);
 
     /**
      * 更新用户

@@ -1,5 +1,6 @@
 package com.shop.user.service;
 
+import com.shop.user.dto.RegisterDTO;
 import com.shop.user.entity.User;
 import com.shop.user.vo.UserInfoVO;
 
@@ -33,7 +34,7 @@ public interface IUserService {
      *
      * @param param 参数
      */
-    void insertUser(User param);
+    void insertUser(RegisterDTO param);
 
     /**
      * 更新用户
@@ -41,5 +42,13 @@ public interface IUserService {
      * @param param 参数
      */
     void updateUser(User param);
+
+    /**
+     * 判断手机号是否存在
+     *
+     * @param phone 手机号
+     * @return boolean
+     */
+    boolean isExist(String phone);
 
 }

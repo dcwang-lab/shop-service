@@ -1,9 +1,13 @@
 package com.shop.user.controller;
 
+import com.shop.common.util.CheckUtils;
 import com.shop.common.util.Result;
+import com.shop.user.dto.LoginDTO;
+import com.shop.user.dto.RegisterDTO;
 import com.shop.user.entity.User;
 import com.shop.user.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -22,6 +26,51 @@ public class UserController {
     private IUserService userService;
 
     /**
+     * 登录
+     *
+     * @param param 参数
+     * @return Result
+     */
+    @PostMapping("/login")
+    public Result login(@RequestBody LoginDTO param) {
+        log.info("参数==={}", param);
+        return Result.success();
+    }
+
+    /**
+     * 注册
+     *
+     * @param param 参数
+     * @return Result
+     */
+    @PostMapping("/register")
+    public Result register(@RequestBody RegisterDTO param) {
+        if (param == null) {
+            return Result.error("注册失败!");
+        }
+        if (StringUtils.isBlank(param.getName())) {
+            return Result.error("请填写姓名!");
+        }
+        if (StringUtils.isBlank(param.getPhone())) {
+            return Result.error("请填写手机号!");
+        }
+        if (!CheckUtils.isMobile(param.getPhone())) {
+            return Result.error("请正确填写手机号!");
+        }
+        if (userService.isExist(param.getPhone())) {
+            return Result.error("手机号已存在!");
+        }
+        if (StringUtils.isBlank(param.getPassword())) {
+            return Result.error("请填写密码!");
+        }
+        if (param.getPassword().length() < 6 || param.getPassword().length() > 10) {
+            return Result.error("请填写6~10位的密码!");
+        }
+        userService.insertUser(param);
+        return Result.success("注册成功!");
+    }
+
+    /**
      * 获取用户详情
      *
      * @param id 用户id
@@ -33,19 +82,7 @@ public class UserController {
     }
 
     /**
-     * 新增用户
-     *
-     * @param param 参数
-     * @return Result
-     */
-    @PostMapping("/insertUser")
-    public Result insertUser(@RequestBody User param) {
-        userService.insertUser(param);
-        return Result.success("新增用户成功");
-    }
-
-    /**
-     * 更新用户
+     * 更新用户信息
      *
      * @param param 参数
      * @return Result
@@ -53,7 +90,7 @@ public class UserController {
     @PutMapping("/updateUser")
     public Result updateUser(@RequestBody User param) {
         userService.updateUser(param);
-        return Result.success("更新用户成功");
+        return Result.success("更新用户信息成功");
     }
 
 }

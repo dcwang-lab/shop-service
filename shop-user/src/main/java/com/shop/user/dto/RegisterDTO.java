@@ -1,19 +1,14 @@
-package com.shop.user.entity;
+package com.shop.user.dto;
 
-import com.shop.common.util.BaseEntity;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-import java.math.BigDecimal;
 
 /**
  * @Author: dcWang
- * @Date: 2022/6/13 15:47
- * @Description: 用户实体类
+ * @Date: 2022/6/17 14:56
+ * @Description: 注册dto
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
-public class User extends BaseEntity {
+public class RegisterDTO {
 
     /**
      * 用户名称
@@ -31,7 +26,7 @@ public class User extends BaseEntity {
     private String phone;
 
     /**
-     * 用户密码
+     * 密码
      */
     private String password;
 
@@ -39,10 +34,5 @@ public class User extends BaseEntity {
      * 用户头像
      */
     private String photo;
-
-    /**
-     * 用户余额
-     */
-    private BigDecimal balance;
 
 }
