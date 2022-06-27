@@ -1,5 +1,7 @@
 package com.shop.user.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.shop.common.util.CheckUtils;
 import com.shop.common.util.Result;
 import com.shop.user.dto.LoginDTO;
@@ -76,9 +78,15 @@ public class UserController {
      * @param id 用户id
      * @return Result
      */
+    @SentinelResource(value = "getUser", blockHandler = "getUserFlowQpsException")
     @GetMapping("/getUser/{id}")
     public Result getUser(@PathVariable("id") Long id) {
         return Result.success("用户信息查询成功").put("data", userService.getUser(id));
+    }
+
+    public Result getUserFlowQpsException(Long id, BlockException be) {
+        log.info("id为：" + id + "的用户访问过于频繁，已限流!");
+        return Result.error("访问过于频繁，请稍后重试!");
     }
 
     /**
