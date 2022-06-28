@@ -1,4 +1,4 @@
-package com.shop.commodity.entity;
+package com.shop.product.entity;
 
 import com.shop.common.util.BaseEntity;
 import lombok.Data;
@@ -13,7 +13,7 @@ import java.math.BigDecimal;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class Commodity extends BaseEntity {
+public class Product extends BaseEntity {
 
     /**
      * 商品名称

@@ -1,7 +1,7 @@
 spring:
   application:
     # 应用名称
-    name: shop-commodity
+    name: shop-product
   profiles:
     # 环境
     active: dev

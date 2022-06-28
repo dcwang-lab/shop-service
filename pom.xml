@@ -12,7 +12,7 @@
     <description>商城</description>
 
     <modules>
-        <module>shop-commodity</module>
+        <module>shop-product</module>
         <module>shop-common</module>
         <module>shop-gateway</module>
         <module>shop-user</module>

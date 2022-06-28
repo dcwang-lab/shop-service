@@ -1,4 +1,4 @@
-package com.shop.commodity.entity;
+package com.shop.product.entity;
 
 import com.shop.common.util.BaseEntity;
 import lombok.Data;

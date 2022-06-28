@@ -1,4 +1,4 @@
-package com.shop.commodity;
+package com.shop.product;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,8 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Description:
  */
 @SpringBootApplication
-public class CommodityApplication {
+public class ProductApplication {
     public static void main(String[] args) {
-        SpringApplication.run(CommodityApplication.class);
+        SpringApplication.run(ProductApplication.class);
     }
 }

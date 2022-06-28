@@ -1,6 +1,6 @@
-package com.shop.commodity.mapper;
+package com.shop.product.mapper;
 
-import com.shop.commodity.entity.Commodity;
+import com.shop.product.entity.Product;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
  * @Description: 商品mapper接口
  */
 @Mapper
-public interface CommodityMapper {
+public interface ProductMapper {
 
     /**
      * 商品列表查询
@@ -19,7 +19,7 @@ public interface CommodityMapper {
      * @param queryParam 查询条件
      * @return List
      */
-    List<Commodity> listCommodities(Commodity queryParam);
+    List<Product> listProducts(Product queryParam);
 
     /**
      * 获取商品详情
@@ -27,13 +27,13 @@ public interface CommodityMapper {
      * @param id 商品id
      * @return Commodity
      */
-    Commodity getCommodity(Long id);
+    Product getProduct(Long id);
 
     /**
      * 更新商品信息
      *
      * @param param 参数
      */
-    void update(Commodity param);
+    void update(Product param);
 
 }

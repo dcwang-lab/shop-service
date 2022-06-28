@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.shop.commodity.mapper.CommodityMapper">
-    <resultMap id="commodityResult" type="com.shop.commodity.entity.Commodity">
+<mapper namespace="com.shop.product.mapper.ProductMapper">
+    <resultMap id="productResult" type="com.shop.product.entity.Product">
         <id column="id" property="id"/>
         <id column="name" property="name"/>
         <id column="describe" property="describe"/>
@@ -19,47 +19,47 @@
         <id column="del_flag" property="delFlag"/>
     </resultMap>
 
-    <sql id="selectCommodityVO">
-        select c.`id`,
-               c.`name`,
-               c.`describe`,
-               c.`specs_id`,
-               c.`type_id`,
-               c.`price`,
-               c.`stock`,
-               c.`file_path`,
-               c.`create_by`,
-               c.`create_time`,
-               c.`update_by`,
-               c.`update_time`,
-               c.`del_flag`
-        from tb_commodity c
+    <sql id="selectProductVO">
+        select p.`id`,
+               p.`name`,
+               p.`describe`,
+               p.`specs_id`,
+               p.`type_id`,
+               p.`price`,
+               p.`file_path`,
+               p.`stock`,
+               p.`create_by`,
+               p.`create_time`,
+               p.`update_by`,
+               p.`update_time`,
+               p.`del_flag`
+        from tb_product p
     </sql>
 
-    <select id="listCommodities" resultMap="commodityResult">
-        <include refid="selectCommodityVO"/>
+    <select id="listProducts" resultMap="productResult">
+        <include refid="selectProductVO"/>
         <where>
             <if test="name != null and name != ''">
-                and c.`name` like concat('%', #{name}, '%')
+                and p.`name` like concat('%', #{name}, '%')
             </if>
             <if test="typeId != null">
-                and c.type_id = #{typeId}
+                and p.type_id = #{typeId}
             </if>
             <if test="(params != null and params != '') and (params.startTime != null and params.startTime != '') and
             (params.endTime != null and params.endTime != '')">
-                and c.`create_time` between #{params.startTime} and #{params.endTime}
+                and p.`create_time` between #{params.startTime} and #{params.endTime}
             </if>
-            and c.`del_flag` = 0
+            and p.`del_flag` = 0
         </where>
     </select>
 
-    <select id="getCommodity" resultMap="commodityResult">
-        <include refid="selectCommodityVO"/>
+    <select id="getProduct" resultMap="productResult">
+        <include refid="selectProductVO"/>
         where c.id = #{id}
     </select>
 
-    <update id="update" parameterType="com.shop.commodity.entity.Commodity">
-        update tb_commodity
+    <update id="update" parameterType="com.shop.product.entity.Product">
+        update tb_product
         <set>
             <if test="stock != null">
                 stock = #{stock},

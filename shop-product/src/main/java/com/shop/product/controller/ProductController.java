@@ -1,7 +1,7 @@
-package com.shop.commodity.controller;
+package com.shop.product.controller;
 
-import com.shop.commodity.entity.Commodity;
-import com.shop.commodity.service.ICommodityService;
+import com.shop.product.entity.Product;
+import com.shop.product.service.IProductService;
 import com.shop.common.util.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -16,11 +16,11 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-@RequestMapping("/commodity")
-public class CommodityController {
+@RequestMapping("/product")
+public class ProductController {
 
     @Resource
-    private ICommodityService commodityService;
+    private IProductService commodityService;
 
     /**
      * 商品列表查询
@@ -28,9 +28,9 @@ public class CommodityController {
      * @param queryParam 查询条件
      * @return Result
      */
-    @GetMapping("/listCommodities")
-    public Result listCommodities(Commodity queryParam) {
-        List<Commodity> list = commodityService.listCommodities(queryParam);
+    @GetMapping("/listProducts")
+    public Result listCommodities(Product queryParam) {
+        List<Product> list = commodityService.listProducts(queryParam);
         return Result.success().put("data", list);
     }
 
@@ -40,9 +40,9 @@ public class CommodityController {
      * @param id 商品id
      * @return Result
      */
-    @GetMapping("/getCommodity/{id}")
+    @GetMapping("/getProduct/{id}")
     public Result getCommodity(@PathVariable("id") Long id) {
-        return Result.success().put("data", commodityService.getCommodity(id));
+        return Result.success().put("data", commodityService.getProduct(id));
     }
 
     /**
@@ -51,8 +51,8 @@ public class CommodityController {
      * @param param 参数
      * @return Result
      */
-    @PutMapping("/updateCommodity")
-    public Result updateCommodity(@RequestBody Commodity param) {
+    @PutMapping("/updateProduct")
+    public Result updateProduct(@RequestBody Product param) {
         commodityService.update(param);
         return Result.success("更新商品信息成功");
     }

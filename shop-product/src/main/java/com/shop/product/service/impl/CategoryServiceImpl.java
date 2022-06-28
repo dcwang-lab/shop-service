@@ -1,8 +1,8 @@
-package com.shop.commodity.service.impl;
+package com.shop.product.service.impl;
 
-import com.shop.commodity.entity.Category;
-import com.shop.commodity.mapper.CategoryMapper;
-import com.shop.commodity.service.ICategoryService;
+import com.shop.product.entity.Category;
+import com.shop.product.mapper.CategoryMapper;
+import com.shop.product.service.ICategoryService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

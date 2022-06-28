@@ -1,7 +1,7 @@
-package com.shop.commodity.controller;
+package com.shop.product.controller;
 
-import com.shop.commodity.entity.Category;
-import com.shop.commodity.service.ICategoryService;
+import com.shop.product.entity.Category;
+import com.shop.product.service.ICategoryService;
 import com.shop.common.util.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,6 +1,6 @@
-package com.shop.commodity.mapper;
+package com.shop.product.mapper;
 
-import com.shop.commodity.entity.Category;
+import com.shop.product.entity.Category;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.shop.commodity.mapper.CategoryMapper">
-    <resultMap id="categoryResult" type="com.shop.commodity.entity.Category">
+<mapper namespace="com.shop.product.mapper.CategoryMapper">
+    <resultMap id="categoryResult" type="com.shop.product.entity.Category">
         <id column="id" property="id"/>
         <id column="name" property="name"/>
         <id column="parent_id" property="parentId"/>
@@ -26,7 +26,7 @@
         from tb_category c
     </sql>
 
-    <select id="listCategories" resultMap="categoryResult" parameterType="com.shop.commodity.entity.Category">
+    <select id="listCategories" resultMap="categoryResult" parameterType="com.shop.product.entity.Category">
         <include refid="selectCategoryVO"/>
         <where>
             <if test="name != null and name != ''">

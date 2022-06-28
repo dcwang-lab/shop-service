@@ -1,6 +1,6 @@
-package com.shop.commodity.service;
+package com.shop.product.service;
 
-import com.shop.commodity.entity.Category;
+import com.shop.product.entity.Category;
 
 import java.util.List;
 
