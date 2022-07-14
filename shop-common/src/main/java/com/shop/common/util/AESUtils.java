@@ -85,14 +85,14 @@ public class AESUtils {
      * 字符串装换成 Base64
      */
 
-    public static byte[] stringToBase64(String key) throws Exception {
+    public static byte[] stringToBase64(String key) {
         return Base64.decodeBase64(key.getBytes());
     }
 
     /**
      * Base64装换成字符串
      */
-    public static String base64ToString(byte[] key) throws Exception {
+    public static String base64ToString(byte[] key) {
         return new Base64().encodeToString(key);
     }
 

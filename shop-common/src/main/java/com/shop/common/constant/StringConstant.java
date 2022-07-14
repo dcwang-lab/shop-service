@@ -12,4 +12,14 @@ public class StringConstant {
      */
     public static final String DEFAULT_PHOTO = "http://43.138.51.212/image/jt.png";
 
+    /**
+     * 空白
+     */
+    public static final String EMPTY = "";
+
+    /**
+     * 英文逗号
+     */
+    public static final String COMMA = ",";
+
 }

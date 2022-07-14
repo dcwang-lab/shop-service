@@ -2,9 +2,11 @@ package com.shop.user.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.shop.common.enums.LoginEnum;
 import com.shop.common.util.CheckUtils;
 import com.shop.common.util.Result;
 import com.shop.user.dto.LoginDTO;
+import com.shop.user.dto.QueryUserDTO;
 import com.shop.user.dto.RegisterDTO;
 import com.shop.user.entity.User;
 import com.shop.user.service.IUserService;
@@ -35,8 +37,26 @@ public class UserController {
      */
     @PostMapping("/login")
     public Result login(@RequestBody LoginDTO param) {
-        log.info("参数==={}", param);
-        return Result.success();
+        if (param == null) {
+            return Result.error("登录失败!");
+        }
+        if (StringUtils.isBlank(param.getPhone())) {
+            return Result.error("请输入手机号!");
+        }
+        if (!CheckUtils.isMobile(param.getPhone())) {
+            return Result.error("请正确填写手机号!");
+        }
+        if (StringUtils.isBlank(param.getPassword())) {
+            return Result.error("请输入密码!");
+        }
+        LoginEnum loginEnum = userService.login(param.getPhone(), param.getPassword());
+        if (loginEnum.getCode().equals(1)) {
+            QueryUserDTO queryParam = new QueryUserDTO();
+            queryParam.setPhone(param.getPhone());
+            return Result.success(loginEnum.getCode(), loginEnum.getMessage()).put("data", userService.getUser(queryParam));
+        } else {
+            return Result.success(loginEnum.getCode(), loginEnum.getMessage());
+        }
     }
 
     /**
@@ -81,7 +101,9 @@ public class UserController {
     @SentinelResource(value = "getUser", blockHandler = "getUserFlowQpsException")
     @GetMapping("/getUser/{id}")
     public Result getUser(@PathVariable("id") Long id) {
-        return Result.success("用户信息查询成功").put("data", userService.getUser(id));
+        QueryUserDTO queryParam = new QueryUserDTO();
+        queryParam.setId(id);
+        return Result.success("用户信息查询成功").put("data", userService.getUser(queryParam));
     }
 
     public Result getUserFlowQpsException(Long id, BlockException be) {

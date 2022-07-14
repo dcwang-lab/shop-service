@@ -5,6 +5,7 @@
 <mapper namespace="com.shop.user.mapper.UserMapper">
     <resultMap id="userResult" type="com.shop.user.entity.User">
         <id column="id" property="id"/>
+        <id column="user_id" property="userId"/>
         <id column="name" property="name"/>
         <id column="sex" property="sex"/>
         <id column="phone" property="phone"/>
@@ -19,6 +20,7 @@
 
     <sql id="selectUserVO">
         select u.`id`,
+               u.`user_id`,
                u.`name`,
                u.`sex`,
                u.`phone`,
@@ -45,15 +47,32 @@
         </where>
     </select>
 
-    <select id="getUser" resultType="com.shop.user.vo.UserInfoVO">
+    <select id="getUserDetails" resultType="com.shop.user.vo.UserInfoVO">
         select u.id, u.`name`, u.sex, u.phone, u.photo, u.balance, u.create_time createTime
         from tb_user u
-        where u.id = #{id}
+        <where>
+            <if test="id != null">and u.id = #{id}</if>
+            <if test="phone != null and phone != ''">and u.phone = #{phone}</if>
+        </where>
+    </select>
+
+    <select id="getUserByPhone" resultType="com.shop.user.bo.LoginBO">
+        select u.id,
+               u.`name`,
+               u.sex,
+               u.phone,
+               u.password,
+               u.photo,
+               u.balance,
+               u.create_time createTime
+        from tb_user u
+        where u.phone = #{phone}
     </select>
 
     <insert id="insertUser" parameterType="com.shop.user.dto.RegisterDTO">
         insert into tb_user
         <trim prefix="(" suffix=")" suffixOverrides=",">
+            `user_id`,
             `name`,
             `sex`,
             `phone`,
@@ -62,6 +81,7 @@
             `create_time`,
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{userId},
             #{name},
             #{sex},
             #{phone},

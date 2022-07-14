@@ -1,5 +1,7 @@
 package com.shop.user.mapper;
 
+import com.shop.user.bo.LoginBO;
+import com.shop.user.dto.QueryUserDTO;
 import com.shop.user.dto.RegisterDTO;
 import com.shop.user.entity.User;
 import com.shop.user.vo.UserInfoVO;
@@ -24,12 +26,20 @@ public interface UserMapper {
     List<UserInfoVO> listUsers(User queryParam);
 
     /**
-     * 获取用户详情
+     * 获取用户信息
      *
-     * @param id 用户id
-     * @return User
+     * @param queryParam 查询条件
+     * @return UserInfoVO
      */
-    UserInfoVO getUser(Long id);
+    UserInfoVO getUserDetails(QueryUserDTO queryParam);
+
+    /**
+     * 获取用户信息
+     *
+     * @param phone 手机号
+     * @return LoginBO
+     */
+    LoginBO getUserByPhone(String phone);
 
     /**
      * 新增用户

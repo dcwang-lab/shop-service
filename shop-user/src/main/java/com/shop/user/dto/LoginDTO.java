@@ -11,12 +11,12 @@ import lombok.Data;
 public class LoginDTO {
 
     /**
-     * 用户手机号
+     * 手机号
      */
     private String phone;
 
     /**
-     * 用户密码
+     * 密码
      */
     private String password;
 

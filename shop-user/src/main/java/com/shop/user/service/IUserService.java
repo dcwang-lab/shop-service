@@ -1,5 +1,8 @@
 package com.shop.user.service;
 
+import com.shop.common.enums.LoginEnum;
+import com.shop.user.bo.LoginBO;
+import com.shop.user.dto.QueryUserDTO;
 import com.shop.user.dto.RegisterDTO;
 import com.shop.user.entity.User;
 import com.shop.user.vo.UserInfoVO;
@@ -14,6 +17,15 @@ import java.util.List;
 public interface IUserService {
 
     /**
+     * 登录
+     *
+     * @param phone    手机号
+     * @param password 密码
+     * @return LoginEnum
+     */
+    LoginEnum login(String phone, String password);
+
+    /**
      * 用户列表查询
      *
      * @param queryParam 查询条件
@@ -22,12 +34,20 @@ public interface IUserService {
     List<UserInfoVO> listUsers(User queryParam);
 
     /**
-     * 获取用户详情
+     * 获取用户信息
      *
-     * @param id 用户id
-     * @return User
+     * @param queryParam 查询条件
+     * @return UserInfoVO
      */
-    UserInfoVO getUser(Long id);
+    UserInfoVO getUser(QueryUserDTO queryParam);
+
+    /**
+     * 获取用户信息
+     *
+     * @param phone    手机号
+     * @return LoginBO
+     */
+    LoginBO getUser(String phone);
 
     /**
      * 新增用户

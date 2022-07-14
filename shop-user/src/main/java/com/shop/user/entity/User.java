@@ -16,6 +16,11 @@ import java.math.BigDecimal;
 public class User extends BaseEntity {
 
     /**
+     * 用户id
+     */
+    private String userId;
+
+    /**
      * 用户名称
      */
     private String name;
